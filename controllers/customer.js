@@ -22,43 +22,30 @@ const getSingle = async (reg, res) => {
 
 const createCustomer = async (reg, res) => {
     //#swagger.tags=['Customers']
-    const user = {
-        clientCode: req.body.clientCode,
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        phoneNumber: req.body.phoneNumber,
-        streetAdd: req.body.streetAdd,
-        city: req.body.city,
-        state: req.body.state,
-        postalCode: req.body.postalCode,
-        country: req.body.country
+    const customer = {
+        customer_name: req.body.customer_name,
+        customer_phone: req.body.customer_phone,
+        customer_address: req.body.customer_address,
+        customer_notes: req.body.customer_notes
     };
-    const response = await mongodb.getDatabase().db().collection('customer').insertOne(user);
+    const response = await mongodb.getDatabase().db().collection('customer').insertOne(customer);
     if (response.acknowledged) {
         res.status(204).send();
     } else {
-        res.status(500).json(response.error || 'Some error occured while adding the user');
+        res.status(500).json(response.error || 'Some error occured while adding the Customer');
     };
 };
 
 const updateCustomer = async (reg, res) => {
     //#swagger.tags=['Customers']
-    const userId = new ObjectId(reg.params.id);
-    const user = {
-        // update when we have the format
-        clientCode: req.body.clientCode,
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        phoneNumber: req.body.phoneNumber,
-        streetAdd: req.body.streetAdd,
-        city: req.body.city,
-        state: req.body.state,
-        postalCode: req.body.postalCode,
-        country: req.body.country
+    const customerId = new ObjectId(reg.params.id);
+    const customer = {
+        customer_name: req.body.customer_name,
+        customer_phone: req.body.customer_phone,
+        customer_address: req.body.customer_address,
+        customer_notes: req.body.customer_notes
     };
-    const response = await mongodb.getDatabase().db().collection('customer').replaceOne({_id: userId}, user);
+    const response = await mongodb.getDatabase().db().collection('customer').replaceOne({_id: customerId}, customer);
     if (response.modifiedCount > 0) {
         res.status(204).send();
     } else {
@@ -68,8 +55,8 @@ const updateCustomer = async (reg, res) => {
 
 const deleteCustomer = async (reg, res) => {
     //#swagger.tags=['Customers']
-    const userId = new ObjectId(reg.params.id);
-    const response = await mongodb.getDatabase().db().collection('customer').deleteOne({_id: userId});
+    const customerId = new ObjectId(reg.params.id);
+    const response = await mongodb.getDatabase().db().collection('customer').remove({_id: customerId}, true);
     if (response.deletedCount > 0) {
         res.status(204).send();
     } else {

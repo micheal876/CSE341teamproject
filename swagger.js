@@ -2,7 +2,7 @@ const swaggerAutogen = require('swagger-autogen')();
 
 const doc = {
   info: {
-    title: 'CSE341teamproject',
+    title: 'Supplier Management API',
     description: 'Final CSE341 Project for group 9'
   },
   host: 'localhost:3000',

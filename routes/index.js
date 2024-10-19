@@ -7,7 +7,7 @@ router.use('/', require('./swagger'));
 //route to the page 
 router.use('/customer', require('./customer'));
 //router.use('/balance', require('./balance'));
-//router.use('/inventory', require('./inventory'));
+router.use('/inventory', require('./inventory'));
 //router.use('/supplier', require('./supplier'));
 router.get('/', (req, res) => {
     res.send('Home Page: Final CSE341 Project for group 9');
