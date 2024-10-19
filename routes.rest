@@ -1,5 +1,3 @@
-
-
 # Get all customers
 GET http://localhost:3000/customer
 Content-Type: application/json
@@ -7,7 +5,7 @@ Content-Type: application/json
 ###
 
 # Get a single customer by ID (replace :id with an actual customer ID)
-GET http://localhost:3000/customers/:id
+GET http://localhost:3000/customer/:id
 Content-Type: application/json
 
 ###
@@ -17,13 +15,82 @@ POST http://localhost:3000/customer
 Content-Type: application/json
 
 {
-  "firstName": "John",
-  "lastName": "Doe",
-  "email": "john.doe@example.com",
-  "phoneNumber": "163-456-7890",
-  "streetAdd": "123 Elm Street",
-  "city": "Springfield",
-  "state": "IL",
-  "postalCode": "62704",
-  "country": "USA"
+    "customer_name": "John Doe",
+    "customer_phone": "123-456-7890",
+    "customer_address": "123 Main St",
+    "customer_notes": "New customer"
 }
+
+###
+
+# Update an existing customer by ID (replace :id with an actual customer ID)
+PUT http://localhost:3000/customer/6713a7b6789c2a8d87e35537
+Content-Type: application/json
+
+{
+    "customer_name": "Micheal Edwards",
+    "customer_phone": "12345-765-4321",
+    "customer_address": "6656 Elm St",
+    "customer_notes": "Updated customer"
+}
+
+###
+
+# Delete a customer by ID (replace :id with an actual customer ID)
+DELETE http://localhost:3000/customer/6713a26b64669bfe62de830c
+Content-Type: application/json
+
+
+
+
+
+
+
+
+
+
+
+
+//get all inventory
+GET http://localhost:3000/inventory
+Content-Type: application/json
+
+###
+
+# Get a single inventory item by ID (replace :id with an actual inventory ID)
+GET http://localhost:3000/inventory/6713b0a10d48e47309628e1e
+Content-Type: application/json
+
+###
+
+
+
+# Add a new inventory item
+POST http://localhost:3000/inventory 
+Content-Type: application/json
+
+{
+    "inv_name": "old Item",
+    "inv_quantity": 200,
+    "inv_price": 249.99,
+    "inv_description": "This is a new inventory item."
+}
+
+###
+
+# Update an existing inventory item by ID (replace :id with an actual inventory ID)
+PUT http://localhost:3000/inventory/:id
+Content-Type: application/json
+
+{
+    "inv_name": "Updated Item",
+    "inv_quantity": 150,
+    "inv_price": 39.99,
+    "inv_description": "This is an updated inventory item."
+}
+
+###
+
+# Delete an inventory item by ID (replace :id with an actual inventory ID)
+DELETE http://localhost:3000/inventory/:id
+Content-Type: application/json
