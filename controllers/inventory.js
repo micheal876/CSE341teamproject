@@ -23,10 +23,10 @@ const getSingle = async (reg, res) => {
 const createInventory = async (reg, res) => {
     //#swagger.tags=['inventory']
     const user = {
-        inv_name: req.body.inv_name,
-        inv_quantity: req.body.inv_quantity,
-        inv_price: req.body.inv_price,
-        inv_description: req.body.inv_description
+        inv_name: reg.body.inv_name,
+        inv_quantity: reg.body.inv_quantity,
+        inv_price: reg.body.inv_price,
+        inv_description: reg.body.inv_description
     };
     const response = await mongodb.getDatabase().db().collection('inv').insertOne(user);
     if (response.acknowledged) {
@@ -40,10 +40,10 @@ const updateInventory = async (reg, res) => {
     //#swagger.tags=['inventory']
     const userId = new ObjectId(reg.params.id);
     const user = {
-        inv_name: req.body.inv_name,
-        inv_quantity: req.body.inv_quantity,
-        inv_price: req.body.inv_price,
-        inv_description: req.body.inv_description
+        inv_name: reg.body.inv_name,
+        inv_quantity: reg.body.inv_quantity,
+        inv_price: reg.body.inv_price,
+        inv_description: reg.body.inv_description
     };
     const response = await mongodb.getDatabase().db().collection('inv').replaceOne({_id: userId}, user);
     if (response.modifiedCount > 0) {

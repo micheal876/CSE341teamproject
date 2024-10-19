@@ -36,14 +36,14 @@ const createCustomer = async (req, res) => { //reg is stead of req
     };
 };
 
-const updateCustomer = async (reg, res) => {
+const updateCustomer = async (reg, res) => { //reg is stead of req
     //#swagger.tags=['Customers']
     const customerId = new ObjectId(reg.params.id);
     const customer = {
-        customer_name: req.body.customer_name,
-        customer_phone: req.body.customer_phone,
-        customer_address: req.body.customer_address,
-        customer_notes: req.body.customer_notes
+        customer_name: reg.body.customer_name,
+        customer_phone: reg.body.customer_phone,
+        customer_address: reg.body.customer_address,
+        customer_notes: reg.body.customer_notes
     };
     const response = await mongodb.getDatabase().db().collection('customer').replaceOne({_id: customerId}, customer);
     if (response.modifiedCount > 0) {
@@ -56,7 +56,7 @@ const updateCustomer = async (reg, res) => {
 const deleteCustomer = async (reg, res) => {
     //#swagger.tags=['Customers']
     const customerId = new ObjectId(reg.params.id);
-    const response = await mongodb.getDatabase().db().collection('customer').remove({_id: customerId}, true);
+    const response = await mongodb.getDatabase().db().collection('customer').deleteOne({_id: customerId});
     if (response.deletedCount > 0) {
         res.status(204).send();
     } else {
