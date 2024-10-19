@@ -1,0 +1,29 @@
+
+
+# Get all customers
+GET http://localhost:3000/customer
+Content-Type: application/json
+
+###
+
+# Get a single customer by ID (replace :id with an actual customer ID)
+GET http://localhost:3000/customers/:id
+Content-Type: application/json
+
+###
+
+# Add a new customer
+POST http://localhost:3000/customer 
+Content-Type: application/json
+
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "john.doe@example.com",
+  "phoneNumber": "163-456-7890",
+  "streetAdd": "123 Elm Street",
+  "city": "Springfield",
+  "state": "IL",
+  "postalCode": "62704",
+  "country": "USA"
+}

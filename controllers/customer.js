@@ -20,7 +20,7 @@ const getSingle = async (reg, res) => {
     });
 };
 
-const createCustomer = async (reg, res) => {
+const createCustomer = async (req, res) => { //reg is stead of req
     //#swagger.tags=['Customers']
     const customer = {
         customer_name: req.body.customer_name,
