@@ -5,7 +5,7 @@ const doc = {
     title: 'Supplier Management API',
     description: 'Final CSE341 Project for group 9'
   },
-  host: 'https://cse341-final-project-6c89.onrender.com',
+  host: 'cse341-final-project-6c89.onrender.com',
   //host: '',
   schemes: ['https','http'],
 };
