@@ -1,3 +1,5 @@
+# Customers Routes
+
 # Get all customers
 GET http://localhost:3000/customer
 Content-Type: application/json
@@ -5,7 +7,7 @@ Content-Type: application/json
 ###
 
 # Get a single customer by ID (replace :id with an actual customer ID)
-GET http://localhost:3000/customer/:id
+GET http://localhost:3000/customer/6713b7194cc9dfefe807da17
 Content-Type: application/json
 
 ###
@@ -15,23 +17,23 @@ POST http://localhost:3000/customer
 Content-Type: application/json
 
 {
-    "customer_name": "John Doe",
-    "customer_phone": "123-456-7890",
-    "customer_address": "123 Main St",
-    "customer_notes": "New customer"
+    "customer_name": "jane bill",
+    "customer_phone": "123-000-7890",
+    "customer_address": "456 Main St",
+    "customer_notes": "New customer jane"
 }
 
 ###
 
 # Update an existing customer by ID (replace :id with an actual customer ID)
-PUT http://localhost:3000/customer/6713a7b6789c2a8d87e35537
+PUT http://localhost:3000/customer/6713b7194cc9dfefe807da17
 Content-Type: application/json
 
 {
-    "customer_name": "Micheal Edwards",
-    "customer_phone": "12345-765-4321",
-    "customer_address": "6656 Elm St",
-    "customer_notes": "Updated customer"
+    "customer_name": "Jane jones",
+    "customer_phone": "1254-765-4321",
+    "customer_address": "67 Elm St",
+    "customer_notes": "fix last name and address"
 }
 
 ###
@@ -40,18 +42,11 @@ Content-Type: application/json
 DELETE http://localhost:3000/customer/6713a26b64669bfe62de830c
 Content-Type: application/json
 
+###
 
+# Inventory Routes
 
-
-
-
-
-
-
-
-
-
-//get all inventory
+# Get all inventory
 GET http://localhost:3000/inventory
 Content-Type: application/json
 
@@ -62,8 +57,6 @@ GET http://localhost:3000/inventory/6713b0a10d48e47309628e1e
 Content-Type: application/json
 
 ###
-
-
 
 # Add a new inventory item
 POST http://localhost:3000/inventory 
@@ -79,7 +72,7 @@ Content-Type: application/json
 ###
 
 # Update an existing inventory item by ID (replace :id with an actual inventory ID)
-PUT http://localhost:3000/inventory/:id
+PUT http://localhost:3000/inventory/6713b0a10d48e47309628e1e
 Content-Type: application/json
 
 {
@@ -92,5 +85,97 @@ Content-Type: application/json
 ###
 
 # Delete an inventory item by ID (replace :id with an actual inventory ID)
-DELETE http://localhost:3000/inventory/:id
+DELETE http://localhost:3000/inventory/6671987c2937a7e0f6e491373
+Content-Type: application/json
+
+###
+
+# Orders Routes
+
+# Get all orders
+GET http://localhost:3000/order
+Content-Type: application/json
+
+###
+
+# Get a single order by ID (replace :id with an actual order ID)
+GET http://localhost:3000/order/6713b7194cc9dfefe807da18
+Content-Type: application/json
+
+###
+
+# Add a new order
+POST http://localhost:3000/order
+Content-Type: application/json
+
+{
+    "inv_name": "Sample Order",
+    "inv_quantity": 20,
+    "inv_price": 150.99,
+    "inv_description": "This is a new order entry."
+}
+
+###
+
+# Update an existing order by ID (replace :id with an actual order ID)
+PUT http://localhost:3000/order/6713b7194cc9dfefe807da18
+Content-Type: application/json
+
+{
+    "inv_name": "Updated Order",
+    "inv_quantity": 30,
+    "inv_price": 200.99,
+    "inv_description": "This is an updated order entry."
+}
+
+###
+
+# Delete an order by ID (replace :id with an actual order ID)
+DELETE http://localhost:3000/order/67190cd9937a7e0f6e49136f
+Content-Type: application/json
+
+###
+
+# Supplier Routes
+
+# Get all suppliers
+GET http://localhost:3000/supplier
+Content-Type: application/json
+
+###
+
+# Get a single supplier by ID (replace :id with an actual supplier ID)
+GET http://localhost:3000/supplier/6713b7194cc9dfefe807da19
+Content-Type: application/json
+
+###
+
+# Add a new supplier
+POST http://localhost:3000/supplier
+Content-Type: application/json
+
+{
+    "inv_name": "New Supplier",
+    "inv_quantity": 500,
+    "inv_price": 349.99,
+    "inv_description": "This is a new supplier entry."
+}
+
+###
+
+# Update an existing supplier by ID (replace :id with an actual supplier ID)
+PUT http://localhost:3000/supplier/6713b7194cc9dfefe807da19
+Content-Type: application/json
+
+{
+    "inv_name": "Updated Supplier",
+    "inv_quantity": 450,
+    "inv_price": 399.99,
+    "inv_description": "This is an updated supplier entry."
+}
+
+###
+
+# Delete a supplier by ID (replace :id with an actual supplier ID)
+DELETE http://localhost:3000/supplier/6713b7194cc9dfefe807da19
 Content-Type: application/json
