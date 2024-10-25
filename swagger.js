@@ -16,7 +16,7 @@ const endpointsFiles = ['./routes/index.js'];
 
 
 // recreate tge swagger.json file when you make changes
-// node ./swagger.js 
+// node swagger.js 
 
 // generate swagger.json
 swaggerAutogen(outputFile, endpointsFiles, doc);

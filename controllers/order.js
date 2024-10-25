@@ -34,11 +34,14 @@ const getSingle = async (req, res) => {
 const createOrder = async (req, res) => {
     //#swagger.tags=['Orders']
     const order = {
-        // Need to update with fields from order table
-        inv_name: req.body.inv_name,
-        inv_quantity: req.body.inv_quantity,
-        inv_price: req.body.inv_price,
-        inv_description: req.body.inv_description
+        order_date: req.body.order_date,
+        order_ETA: req.body.order_ETA,
+        order_status: req.body.order_status,
+        order_urgency: req.body.order_urgency,
+        order_content: req.body.order_content,
+        order_price: req.body.order_price,
+        order_paid: req.body.order_paid,
+        customer_id: req.body.customer_id
     };
 
     try {
@@ -59,11 +62,14 @@ const updateOrder = async (req, res) => {
     try {
         const orderId = new ObjectId(req.params.id);
         const order = {
-            // Need to update with fields from order table
-            inv_name: req.body.inv_name,
-            inv_quantity: req.body.inv_quantity,
-            inv_price: req.body.inv_price,
-            inv_description: req.body.inv_description
+            order_date: req.body.order_date,
+            order_ETA: req.body.order_ETA,
+            order_status: req.body.order_status,
+            order_urgency: req.body.order_urgency,
+            order_content: req.body.order_content,
+            order_price: req.body.order_price,
+            order_paid: req.body.order_paid,
+            customer_id: req.body.customer_id
         };
         const response = await mongodb.getDatabase().db().collection('order').replaceOne({ _id: orderId }, order);
         if (response.modifiedCount > 0) {
