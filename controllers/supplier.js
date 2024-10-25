@@ -4,7 +4,7 @@ const ObjectId = require('mongodb').ObjectId;
 const getAll = async (req, res) => {
     //#swagger.tags=['Suppliers']
     try {
-        const result = await mongodb.getDatabase().db().collection('supplier').find();
+        const result = await mongodb.getDatabase().db().collection('sup').find();
         const items = await result.toArray();
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(items);
@@ -18,7 +18,7 @@ const getSingle = async (req, res) => {
     //#swagger.tags=['Suppliers']
     try {
         const supplierId = new ObjectId(req.params.id);
-        const result = await mongodb.getDatabase().db().collection('supplier').find({ _id: supplierId });
+        const result = await mongodb.getDatabase().db().collection('sup').find({ _id: supplierId });
         const items = await result.toArray();
         if (items.length === 0) {
             return res.status(404).json({ message: 'Supplier not found' });
@@ -42,7 +42,7 @@ const createSupplier = async (req, res) => {
     };
 
     try {
-        const response = await mongodb.getDatabase().db().collection('supplier').insertOne(supplier);
+        const response = await mongodb.getDatabase().db().collection('sup').insertOne(supplier);
         if (response.acknowledged) {
             res.status(201).json({ message: 'Supplier entry created successfully', id: response.insertedId });
         } else {
@@ -65,7 +65,7 @@ const updateSupplier = async (req, res) => {
             inv_price: req.body.inv_price,
             inv_description: req.body.inv_description
         };
-        const response = await mongodb.getDatabase().db().collection('supplier').replaceOne({ _id: supplierId }, supplier);
+        const response = await mongodb.getDatabase().db().collection('sup').replaceOne({ _id: supplierId }, supplier);
         if (response.modifiedCount > 0) {
             res.status(204).send();
         } else {
@@ -81,7 +81,7 @@ const deleteSupplier = async (req, res) => {
     //#swagger.tags=['Suppliers']
     try {
         const supplierId = new ObjectId(req.params.id);
-        const response = await mongodb.getDatabase().db().collection('supplier').deleteOne({ _id: supplierId });
+        const response = await mongodb.getDatabase().db().collection('sup').deleteOne({ _id: supplierId });
         if (response.deletedCount > 0) {
             res.status(204).send();
         } else {
