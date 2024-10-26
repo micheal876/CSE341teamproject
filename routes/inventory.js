@@ -3,6 +3,9 @@ const router = express.Router();
 
 const inventoryController = require('../controllers/inventory');
 
+// git hub authenticate
+const { isAuthenticated } = require("../middleware/authenticate");
+
 // Route to get all inventory items
 router.get('/', async (req, res) => {
     try {
@@ -24,7 +27,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // Route to create a new inventory item
-router.post('/', async (req, res) => {
+router.post('/', isAuthenticated, async (req, res) => {
     try {
         await inventoryController.createInventory(req, res);
     } catch (error) {
@@ -34,7 +37,7 @@ router.post('/', async (req, res) => {
 });
 
 // Route to update an inventory item by ID
-router.put('/:id', async (req, res) => {
+router.put('/:id', isAuthenticated, async (req, res) => {
     try {
         await inventoryController.updateInventory(req, res);
     } catch (error) {
@@ -44,7 +47,7 @@ router.put('/:id', async (req, res) => {
 });
 
 // Route to delete an inventory item by ID
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', isAuthenticated, async (req, res) => {
     try {
         await inventoryController.deleteInventory(req, res);
     } catch (error) {

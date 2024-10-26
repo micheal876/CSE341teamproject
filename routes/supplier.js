@@ -2,6 +2,9 @@ const express = require('express');
 const router = express.Router();
 const supplierController = require('../controllers/supplier');
 
+// git hub authenticate
+const { isAuthenticated } = require("../middleware/authenticate");
+
 // Route to get all suppliers
 router.get('/', async (req, res) => {
     try {
@@ -23,7 +26,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // Route to create a new supplier
-router.post('/', async (req, res) => {
+router.post('/', isAuthenticated, async (req, res) => {
     try {
         await supplierController.createSupplier(req, res);
     } catch (error) {
@@ -33,7 +36,7 @@ router.post('/', async (req, res) => {
 });
 
 // Route to update an existing supplier by ID
-router.put('/:id', async (req, res) => {
+router.put('/:id', isAuthenticated, async (req, res) => {
     try {
         await supplierController.updateSupplier(req, res);
     } catch (error) {
@@ -43,7 +46,7 @@ router.put('/:id', async (req, res) => {
 });
 
 // Route to delete a supplier by ID
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', isAuthenticated, async (req, res) => {
     try {
         await supplierController.deleteSupplier(req, res);
     } catch (error) {
