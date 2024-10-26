@@ -3,6 +3,10 @@ const router = express.Router();
 
 const customerController = require('../controllers/customer');
 
+// git hub authenticate
+const { isAuthenticated } = require("../middleware/authenticate");
+
+
 // Route to get all customers
 router.get('/', async (req, res) => {
     try {
@@ -24,7 +28,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // Route to create a new customer
-router.post('/', async (req, res) => {
+router.post('/', isAuthenticated, async (req, res) => {
     try {
         await customerController.createCustomer(req, res);
     } catch (error) {
@@ -34,7 +38,7 @@ router.post('/', async (req, res) => {
 });
 
 // Route to update a customer by ID
-router.put('/:id', async (req, res) => {
+router.put('/:id', isAuthenticated, async (req, res) => {
     try {
         await customerController.updateCustomer(req, res);
     } catch (error) {
@@ -44,7 +48,7 @@ router.put('/:id', async (req, res) => {
 });
 
 // Route to delete a customer by ID
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', isAuthenticated, async (req, res) => {
     try {
         await customerController.deleteCustomer(req, res);
     } catch (error) {
