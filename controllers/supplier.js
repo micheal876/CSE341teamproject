@@ -34,11 +34,11 @@ const getSingle = async (req, res) => {
 const createSupplier = async (req, res) => {
     //#swagger.tags=['Suppliers']
     const supplier = {
-        // Need to update with fields from supplier table
-        inv_name: req.body.inv_name,
-        inv_quantity: req.body.inv_quantity,
-        inv_price: req.body.inv_price,
-        inv_description: req.body.inv_description
+        sup_name: req.body.sup_name,
+        sup_address: req.body.sup_address,
+        sup_phone: req.body.sup_phone,
+        sup_notes: req.body.sup_notes,
+        inv_id: req.body.inv_id
     };
 
     try {
@@ -59,11 +59,11 @@ const updateSupplier = async (req, res) => {
     try {
         const supplierId = new ObjectId(req.params.id);
         const supplier = {
-            // Need to update with fields from supplier table
-            inv_name: req.body.inv_name,
-            inv_quantity: req.body.inv_quantity,
-            inv_price: req.body.inv_price,
-            inv_description: req.body.inv_description
+            sup_name: req.body.sup_name,
+            sup_address: req.body.sup_address,
+            sup_phone: req.body.sup_phone,
+            sup_notes: req.body.sup_notes,
+            inv_id: req.body.inv_id
         };
         const response = await mongodb.getDatabase().db().collection('sup').replaceOne({ _id: supplierId }, supplier);
         if (response.modifiedCount > 0) {
